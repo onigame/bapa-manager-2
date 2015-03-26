@@ -12,9 +12,9 @@ require_once('../../load_ini.php');
 if ( $_SESSION['app'] == 'facebook' ) { // Facebook App
 
 	// App ID
-	$_SESSION['fb_appid'] = $inifile[FACEBOOKID];
+	$_SESSION['fb_appid'] = $inifile['FACEBOOKID'];
 	// App Secret
-	$_SESSION['fb_appsecret'] = $inifile[FACEBOOKSECRET];
+	$_SESSION['fb_appsecret'] = $inifile['FACEBOOKSECRET'];
 	
 }
 elseif ( $_SESSION['app'] == 'twitter' ) { // Twitter App
@@ -28,8 +28,8 @@ elseif ( $_SESSION['app'] == 'twitter' ) { // Twitter App
 elseif ( $_SESSION['app'] == 'google' ) { // Google App
 	
 	// Client ID
-	$_SESSION['gg_appid'] = $inifile[GOOGLEID];
+	$_SESSION['gg_appid'] = $inifile['GOOGLEID'];
 	// Client Secret
-	$_SESSION['gg_appsecret'] = $inifile[GOOGLESECRET];
+	$_SESSION['gg_appsecret'] = $inifile['GOOGLESECRET'];
 	
 }

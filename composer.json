@@ -1,0 +1,6 @@
+{
+  "require": {
+    "tuupola/slim-fake-mcrypt": "dev-master",
+    "slim/slim": "2.6.2"
+  }
+}

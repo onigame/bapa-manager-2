@@ -1,7 +1,7 @@
 -- Created by Vertabelo (http://vertabelo.com)
 -- Script type: create
 -- Scope: [tables, references, sequences, procedures]
--- Generated at Tue Mar 24 00:53:26 UTC 2015
+-- Generated at Tue Mar 24 09:38:30 UTC 2015
 
 
 
@@ -96,7 +96,7 @@ CREATE TABLE player (
     initials varchar(3)    NOT NULL ,
     IFPA_number int    NOT NULL ,
     active bool    NOT NULL ,
-    normalized_game_time real(4,7)    NOT NULL DEFAULT 1 ,
+    normalized_game_time real(7,4)    NOT NULL DEFAULT 1.0 ,
     CONSTRAINT player_pk PRIMARY KEY (id)
 );
 
