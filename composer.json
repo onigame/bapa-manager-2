@@ -1,6 +1,7 @@
 {
   "require": {
     "tuupola/slim-fake-mcrypt": "dev-master",
-    "slim/slim": "2.6.2"
+    "slim/slim": "2.6.2",
+    "twbs/bootstrap": "3.3.4"
   }
 }

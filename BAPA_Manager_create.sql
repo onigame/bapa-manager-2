@@ -1,7 +1,7 @@
 -- Created by Vertabelo (http://vertabelo.com)
 -- Script type: create
 -- Scope: [tables, references, sequences, procedures]
--- Generated at Tue Mar 24 09:38:30 UTC 2015
+-- Generated at Sun Mar 29 12:21:14 UTC 2015
 
 
 
@@ -9,7 +9,7 @@
 -- tables
 -- Table `group`
 CREATE TABLE `group` (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     group_number int    NOT NULL ,
     session_id int    NOT NULL ,
     group_name varchar(5)    NOT NULL ,
@@ -18,14 +18,14 @@ CREATE TABLE `group` (
 
 -- Table league
 CREATE TABLE league (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     league_name varchar(40)    NOT NULL ,
     CONSTRAINT league_pk PRIMARY KEY (id)
 );
 
 -- Table location
 CREATE TABLE location (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     location_name varchar(60)    NOT NULL ,
     street_address varchar(200)    NOT NULL ,
     comments varchar(200)    NOT NULL ,
@@ -35,7 +35,7 @@ CREATE TABLE location (
 
 -- Table machine
 CREATE TABLE machine (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     machine_nickname varchar(7)    NOT NULL ,
     machine_name varchar(20)    NOT NULL ,
     IPDB_number int    NOT NULL ,
@@ -44,7 +44,7 @@ CREATE TABLE machine (
 
 -- Table machine_on_location
 CREATE TABLE machine_on_location (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     display_name varchar(8)    NOT NULL ,
     location_id int    NOT NULL ,
     state_of_repair varchar(20)    NOT NULL ,
@@ -57,7 +57,7 @@ CREATE TABLE machine_on_location (
 
 -- Table machine_selection
 CREATE TABLE machine_selection (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     machine_id int    NOT NULL ,
     session_id int    NOT NULL ,
     temprorarily_broken bool    NOT NULL ,
@@ -66,7 +66,7 @@ CREATE TABLE machine_selection (
 
 -- Table `match`
 CREATE TABLE `match` (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     machine_selection_id int    NOT NULL ,
     creation_time timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     end_time timestamp    NOT NULL ,
@@ -78,7 +78,7 @@ CREATE TABLE `match` (
 
 -- Table match_score
 CREATE TABLE match_score (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     match_id int    NOT NULL ,
     score int    NOT NULL ,
     matchpoints int    NOT NULL ,
@@ -89,20 +89,20 @@ CREATE TABLE match_score (
 
 -- Table player
 CREATE TABLE player (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     givenname varchar(20)    NOT NULL ,
     surname varchar(20)    NOT NULL ,
     email varchar(30)    NOT NULL ,
     initials varchar(3)    NOT NULL ,
     IFPA_number int    NOT NULL ,
     active bool    NOT NULL ,
-    normalized_game_time real(7,4)    NOT NULL DEFAULT 1.0 ,
+    normalized_game_time real(7,4)    NOT NULL DEFAULT 1 ,
     CONSTRAINT player_pk PRIMARY KEY (id)
 );
 
 -- Table player_in_group
 CREATE TABLE player_in_group (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     group_id int    NOT NULL ,
     player_in_session_id int    NOT NULL ,
     total_matchpoints int    NOT NULL ,
@@ -113,7 +113,7 @@ CREATE TABLE player_in_group (
 
 -- Table player_in_season
 CREATE TABLE player_in_season (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     paid_dues bool    NOT NULL ,
     season_id int    NOT NULL ,
     player_id int    NOT NULL ,
@@ -122,7 +122,7 @@ CREATE TABLE player_in_season (
 
 -- Table player_in_session
 CREATE TABLE player_in_session (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     session_id int    NOT NULL ,
     player_in_season_id int    NOT NULL ,
     CONSTRAINT player_in_session_pk PRIMARY KEY (id)
@@ -130,7 +130,7 @@ CREATE TABLE player_in_session (
 
 -- Table season
 CREATE TABLE season (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     season_name varchar(30)    NOT NULL ,
     league_id int    NOT NULL ,
     max_session_count int    NOT NULL ,
@@ -139,7 +139,7 @@ CREATE TABLE season (
 
 -- Table session
 CREATE TABLE session (
-    id int    NOT NULL ,
+    id int    NOT NULL  AUTO_INCREMENT,
     session_name varchar(60)    NOT NULL ,
     creation_time timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP ,
     date date    NOT NULL ,

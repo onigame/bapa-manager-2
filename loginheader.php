@@ -1,5 +1,3 @@
-<div id="authbox">
-
 <?php 
 
 session_start();
@@ -10,18 +8,15 @@ if ( !isset($_SESSION["userprofile"]) ) {
 
 ?>
 
-	login at:
-	<a href="ssa/auth/login.php?app=facebook"class="button fb">Facebook</a>
-	<a href="ssa/auth/login.php?app=google" class="button gg">Google</a>
-	<!-- <a href="ssa/auth/login.php?app=twitter" class="button tt">Twitter</a> -->
+<li><a href="#">login at:</a>
+<li><a href="ssa/auth/login.php?app=facebook"class="button fb">Facebook</a>
+<li><a href="ssa/auth/login.php?app=google" class="button gg">Google</a>
+<!-- <li><a href="ssa/auth/login.php?app=twitter" class="button tt">Twitter</a> -->
 
 <?php } else { ?>
 
-  logged in as <?php echo $_SESSION["userprofile"]['name']; ?>.
-  <a href="ssa/auth/logout.php">Logout</a>
-  <a href="endsession.php">End Session</a>
-
-</div>
-<hr>
+<li><a href="#">logged in as <?php echo $_SESSION["userprofile"]['name']; ?></a>
+<li><a href="ssa/auth/logout.php">Logout</a>
+<li><a href="endsession.php">End Session</a>
 
 <?php } ?>

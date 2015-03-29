@@ -1,0 +1,16 @@
+<a ui-sref="leagueCreate" class="btn btn-default">Add New League</a>
+
+<table class="table" border>
+  <tr>
+    <th>ID</th>
+    <th>League Name</th>
+  </tr>
+  <tr ng-repeat="league in leagues.league">
+    <td>{{league.id}}</td>
+    <td>{{league.league_name}}</td>
+    <td><!--buttons-->
+      <a class="btn btn-primary" ui-sref="leagueView({id:league.id})">Details</a>
+      <a class="btn btn-danger" ng-click="leagueDelete({id:league.id})">Delete</a>
+    </td>
+  </tr>
+</table>

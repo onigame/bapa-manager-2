@@ -5,6 +5,7 @@
 require 'vendor/autoload.php';
 
 require_once('load_ini.php');  // to get DB info
+
 $db = new PDO(
   'mysql:host='.$inifile["HOST"].';dbname='.$inifile["DB"].';charset=utf8', 
   $inifile["USER"], 
@@ -16,7 +17,6 @@ $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 $app = new \Slim\Slim();
 
 /*
-$app->get('/league/:id', 'getLeague');
 $app->put('/league/:id', 'updateLeague');
 $app->delete('/league/:id', 'deleteLeague');
 
@@ -29,6 +29,7 @@ $app->get('/league', function() use ($db) {
     $items = $stmt->fetchAll(PDO::FETCH_OBJ);
     echo '{"league": ' . json_encode($items) . '}';
   } catch(PDOException $e) {
+    error_log($e->getMessage());
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 });
@@ -42,6 +43,20 @@ $app->get('/league/:id', function($id) use ($db) {
     $item = $stmt->fetchObject();
     echo json_encode($item);
   } catch(PDOException $e) {
+    error_log($e->getMessage());
+    echo '{"error":{"text":'. $e->getMessage() .'}}';
+  }
+});
+
+$app->delete('/league/:id', function($id) use ($db) {
+  $sql = "DELETE FROM league WHERE id=:id";
+  try {
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    echo true;
+  } catch(PDOException $e) {
+    error_log($e->getMessage());
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 });
@@ -52,12 +67,13 @@ $app->post('/league', function() use ($db) {
   $sql = "INSERT INTO league (league_name) VALUES (:league_name)";
   try {
     $stmt = $db->prepare($sql);
-    $stmt->bindParam("league_name", $item->league_name);
+    $stmt->bindParam(":league_name", $item->league_name);
     $stmt->execute();
     $item->id = $db->lastInsertId();
     $db = null;
-    echo json_encode($wine);
+    echo json_encode($item);
   } catch(PDOException $e) {
+    error_log($e->getMessage());
     echo '{"error":{"text":'. $e->getMessage() .'}}';
   }
 });

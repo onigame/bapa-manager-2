@@ -1,0 +1,5 @@
+# backup files made by text editors
+*~
+
+# composer directory
+vendor/
